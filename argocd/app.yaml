@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: reactive-category-app
+  name: springboot-reactive-category
   namespace: openshift-gitops
 spec:
   destination:
@@ -9,12 +9,11 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    directory:
-      recurse: true
+    helm:
+      valueFiles:
+        - values.yaml
     path: helm
-    repoURL: https://github.com/anmiralles/springboot-reactive-category-ocp/
-    targetRevision: main
+    repoURL: https://github.com/anmiralles/springboot-reactive-category-ocp
+    targetRevision: HEAD
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    automated: {}
