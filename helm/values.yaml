@@ -98,7 +98,7 @@ livenessProbe:
     path: /actuator/health/liveness
     port: 8080
     scheme: HTTP
-  initialDelaySeconds: 10
+  initialDelaySeconds: 60
   periodSeconds: 5
 readinessProbe:
   httpGet:
