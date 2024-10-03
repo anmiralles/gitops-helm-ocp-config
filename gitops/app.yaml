@@ -5,18 +5,16 @@ metadata:
   namespace: openshift-gitops
 spec:
   generators:
-    - matrix:
-        generators:
-          - list:
-              elements:
-                - namespace: dev
-                  project: default
-                  targetRevision: HEAD
-                  valueFile: values-category-dev.yaml
-                - namespace: test
-                  project: default
-                  targetRevision: HEAD
-                  valueFile: values-category-test.yaml
+    - list:
+        elements:
+          - namespace: dev
+            project: default
+            targetRevision: HEAD
+            valueFile: values-category-dev.yaml
+          - namespace: test
+            project: default
+            targetRevision: HEAD
+            valueFile: values-category-test.yaml
   syncPolicy:
     applicationsSync: create-update
     preserveResourcesOnDeletion: true
