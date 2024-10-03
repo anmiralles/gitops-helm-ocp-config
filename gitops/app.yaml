@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: category-appset
+  namespace: openshift-gitops
+spec:
+  generators:
+    - matrix:
+        generators:
+          - list:
+              elements:
+                - namespace: dev
+                  project: default
+                  targetRevision: HEAD
+                  valueFile: values-category-dev.yaml
+  syncPolicy:
+    applicationsSync: create-update
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{namespace}}-category'
+    spec:
+      destination:
+        namespace: '{{namespace}}'
+        server: 'https://kubernetes.default.svc'
+      project: 'default'
+      sources:
+        - path: '/helm'
+          repoURL: 'https://github.com/anmiralles/springboot-reactive-category-ocp'
+          targetRevision: '{{targetRevision}}'
+          helm:
+            valueFiles:
+              - '{{valueFile}}'
