@@ -27,7 +27,7 @@ spec:
         server: 'https://kubernetes.default.svc'
       project: 'default'
       sources:
-        - path: '/helm'
+        - path: './helm'
           repoURL: 'https://github.com/anmiralles/springboot-reactive-category-ocp'
           targetRevision: '{{targetRevision}}'
           helm:
