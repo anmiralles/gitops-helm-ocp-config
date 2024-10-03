@@ -20,7 +20,7 @@ spec:
           - clusters:
               selector:
                 matchLabels:
-                  argocd.argoproj.io/secret-type: cluster
+                  argocd.argoproj.io/secret-type: in-cluster
   syncPolicy:
     applicationsSync: create-update
     preserveResourcesOnDeletion: true
@@ -30,7 +30,7 @@ spec:
     spec:
       destination:
         namespace: '{{namespace}}'
-        server: 'https://kubernetes.default.svc'
+        server: '{{server}}'
       project: 'default'
       sources:
         - path: '/helm'
