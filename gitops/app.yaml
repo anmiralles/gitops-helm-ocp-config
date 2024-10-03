@@ -24,7 +24,7 @@ spec:
     spec:
       destination:
         namespace: '{{namespace}}'
-        server: '{{server}}'
+        server: 'https://kubernetes.default.svc'
       project: 'default'
       sources:
         - path: '/helm'
