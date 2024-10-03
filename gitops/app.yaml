@@ -17,6 +17,10 @@ spec:
                   project: default
                   targetRevision: HEAD
                   valueFile: values-category-test.yaml
+          - clusters:
+              selector:
+                matchLabels:
+                  argocd.argoproj.io/secret-type: cluster
   syncPolicy:
     applicationsSync: create-update
     preserveResourcesOnDeletion: true
