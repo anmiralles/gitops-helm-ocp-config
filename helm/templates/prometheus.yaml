@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: readiness-rule
+  namespace: dev
+spec:
+  groups:
+    - name: health
+      rules:
+        - alert: KubePodReadinessFailure
+          for: 1m
+          expr: sum by(pod)( kube_pod_info{created_by_kind!="Job"} AND ON (pod, namespace) kube_pod_status_ready{condition="false"} == 1) > 0
+          labels:
+            severity: warning
+          annotations:
+            message: Readiness probe for the Pod {{ $labels.pod }} is failing for last 2 minutes.
+---
