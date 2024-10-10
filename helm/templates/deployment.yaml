@@ -36,6 +36,16 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: SPRING_R2DBC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "helm.fullname" . }}-database-secret
+                  key: database-password
+            {{- range .Values.envs }}
+            - name: {{ .name }}
+              value: {{ .value }}
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
