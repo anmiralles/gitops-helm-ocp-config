@@ -143,4 +143,4 @@ envs:
   - name: SPRING_FLYWAY_USERNAME
     value: "test"
   - name: SPRING_FLYWAY_URL
-    value: "jdbc:postgresql://localhost:5432/category"
+    value: "jdbc:postgresql://postgresql:5432/category"
