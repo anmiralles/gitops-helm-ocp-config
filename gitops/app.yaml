@@ -11,10 +11,6 @@ spec:
             project: default
             targetRevision: HEAD
             valueFile: values-category-dev.yaml
-          - namespace: test
-            project: default
-            targetRevision: HEAD
-            valueFile: values-category-test.yaml
   syncPolicy:
     applicationsSync: create-update
     preserveResourcesOnDeletion: true
