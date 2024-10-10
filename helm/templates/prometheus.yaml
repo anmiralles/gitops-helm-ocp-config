@@ -13,5 +13,5 @@ spec:
           labels:
             severity: warning
           annotations:
-            message: Readiness probe for the Pod {{ $labels.pod }} is failing for last 2 minutes.
+            message: Readiness probe for the Pod is failing for last 2 minutes.
 ---
