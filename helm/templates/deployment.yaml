@@ -40,7 +40,7 @@ spec:
             - name: SPRING_R2DBC_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "helm.fullname" . }}-database-secret
+                  name: postgresql
                   key: database-password
             {{- range .Values.envs }}
             - name: {{ .name }}
