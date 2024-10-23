@@ -113,8 +113,15 @@ autoscaling:
   enabled: false
   minReplicas: 2
   maxReplicas: 2
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 70
   # targetMemoryUtilizationPercentage: 80
+
+monitoring:
+  enabled: true
+  path: /actuator/prometheus
+  interval: 30s
+  port: http
+  schema: http
 
 # Additional volumes on the output Deployment definition.
 volumes: []
